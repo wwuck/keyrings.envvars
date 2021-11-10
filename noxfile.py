@@ -1,0 +1,143 @@
+"""noxfile.py."""
+from __future__ import annotations
+
+import os.path
+
+import nox
+
+# required for session.invoked_from
+nox.needs_version = '>=2021.10.1'
+
+
+@nox.session
+def flake8(session: nox.Session) -> None:
+    """
+    flake8.
+
+    :param session: nox session
+    """
+    args = []
+
+    if session.posargs:
+        args.extend(session.posargs)
+
+    session.install('.[flake8]')
+    session.run('flake8', *args)
+
+
+@nox.session
+def yamllint(session: nox.Session) -> None:
+    """
+    yamllint.
+
+    :param session: nox session
+    """
+    args = ['-f', 'parsable', os.path.relpath(session.invoked_from)]
+
+    if session.posargs:
+        args.extend(session.posargs)
+
+    session.install('yamllint')
+    session.run('yamllint', *args)
+
+
+@nox.session
+def mypy(session: nox.Session) -> None:
+    """
+    MyPy.
+
+    :param session: nox session
+    """
+    args = ['--strict']
+
+    if session.posargs:
+        args.extend(session.posargs)
+
+    args.append('src')
+    args.append('noxfile.py')
+
+    session.install('.[mypy]')
+    session.run('mypy', *args)
+
+
+@nox.session
+def pytest(session: nox.Session) -> None:
+    """
+    Pytest.
+
+    :param session: nox session
+    """
+    args = [
+        '--flake-finder',
+        '--flake-runs=2',
+        '--numprocesses=auto',
+        '--open-files',
+        '--cov=src/keyrings/envvars/',
+        '--cov-report=xml',
+        "--log-format='%(asctime)s %(levelname)s %(message)s'",
+        "--log-date-format='%Y-%m-%d %H:%M:%S'",
+        '--log-cli-level=INFO',
+    ]
+
+    if session.posargs:
+        args.extend(session.posargs)
+
+    session.install('.[pytest]')
+    session.run('pytest', *args)
+
+
+@nox.session
+def build(session: nox.Session) -> None:
+    """
+    Build a wheel and sdist.
+
+    :param session: nox session
+    """
+    args = [
+        '--ini-file=pyproject.toml',
+        'build',
+    ]
+
+    deps = [
+        'flit>=3.5.1',
+    ]
+
+    session.install(*deps)
+    session.run('flit', *args)
+
+
+@nox.session
+def build_check(session: nox.Session) -> None:
+    """
+    Check a wheel; must be called after 'build' session.
+
+    :param session: nox session
+    """
+    deps = [
+        'check-wheel-contents==0.3.3',
+        'twine==3.4.2',
+    ]
+
+    session.install(*deps)
+    session.run('check-wheel-contents', 'dist/')
+    session.run('twine', 'check', '--strict', 'dist/*')
+
+
+@nox.session
+def gitlint(session: nox.Session) -> None:
+    """
+    Gitlint.
+
+    :param session: nox session
+    """
+    args: list[str] = []
+
+    if session.posargs:
+        args.extend(session.posargs)
+
+    deps = [
+        'gitlint',
+    ]
+
+    session.install(*deps)
+    session.run('gitlint', *args)
