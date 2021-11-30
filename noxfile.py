@@ -136,7 +136,7 @@ def gitlint(session: nox.Session) -> None:
         args.extend(session.posargs)
 
     deps = [
-        'gitlint==1.16.0',
+        'gitlint==0.16.0',
     ]
 
     session.install(*deps)
