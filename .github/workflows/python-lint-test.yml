@@ -39,3 +39,8 @@ jobs:
       - name: Nox
         run: |
           nox
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          file: ./coverage.xml
