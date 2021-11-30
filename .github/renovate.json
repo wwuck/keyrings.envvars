@@ -8,6 +8,9 @@
     ":semanticCommitScope(deps)",
     ":semanticCommitTypeAll(ci)"
   ],
+  "labels": [
+    "dependencies"
+  ],
   "packageRules": [
     {
       "description": "use pep440 versioning for specific packages.",
