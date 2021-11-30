@@ -16,7 +16,7 @@ def flake8(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args = []
+    args: list[str] = []
 
     if session.posargs:
         args.extend(session.posargs)
@@ -32,7 +32,7 @@ def yamllint(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args = ['-f', 'parsable', os.path.relpath(session.invoked_from)]
+    args: list[str] = ['-f', 'parsable', os.path.relpath(session.invoked_from)]
 
     if session.posargs:
         args.extend(session.posargs)
@@ -48,7 +48,7 @@ def mypy(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args = ['--strict']
+    args: list[str] = ['--strict']
 
     if session.posargs:
         args.extend(session.posargs)
@@ -67,7 +67,7 @@ def pytest(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args = [
+    args: list[str] = [
         '--flake-finder',
         '--flake-runs=2',
         '--numprocesses=auto',
@@ -93,12 +93,12 @@ def build(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args = [
+    args: list[str] = [
         '--ini-file=pyproject.toml',
         'build',
     ]
 
-    deps = [
+    deps: list[str] = [
         'flit>=3.5.1',
     ]
 
@@ -113,7 +113,7 @@ def build_check(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    deps = [
+    deps: list[str] = [
         'check-wheel-contents==0.3.3',
         'twine==3.4.2',
     ]

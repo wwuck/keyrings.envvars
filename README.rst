@@ -3,7 +3,7 @@ keyrings.envvars
 
 |PyPI| |Status| |Python Version| |License|
 
-|Tests| |Codecov|
+|CI| |Codecov|
 
 |pre-commit| |Black|
 
@@ -19,9 +19,9 @@ keyrings.envvars
 .. |License| image:: https://img.shields.io/pypi/l/keyrings.envvars
    :target: https://opensource.org/licenses/MIT
    :alt: License
-.. |Tests| image:: https://github.com/wwuck/keyrings.envvars/workflows/Tests/badge.svg
-   :target: https://github.com/wwuck/keyrings.envvars/actions?workflow=Tests
-   :alt: Tests
+.. |CI| image:: https://github.com/wwuck/keyrings.envvars/workflows/CI/badge.svg
+   :target: https://github.com/wwuck/keyrings.envvars/actions?workflow=CI
+   :alt: CI
 .. |Codecov| image:: https://codecov.io/gh/wwuck/keyrings.envvars/branch/main/graph/badge.svg
    :target: https://codecov.io/gh/wwuck/keyrings.envvars
    :alt: Codecov
@@ -33,10 +33,7 @@ keyrings.envvars
    :alt: Black
 
 
-Features
---------
-
-* Keyring backend for the keyring_ utility that provides credentials via environment variables.
+*keyrings.envvars* is a keyring backend plugin for the keyring_ utility that provides credentials via environment variables.
 
 
 Requirements
@@ -89,7 +86,7 @@ License
 -------
 
 Distributed under the terms of the `MIT license`_,
-*Keyrings.Envvars* is free and open source software.
+*keyrings.envvars* is free and open source software.
 
 
 Issues
