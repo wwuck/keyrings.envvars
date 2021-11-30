@@ -80,6 +80,7 @@ Contributing
 ------------
 
 Contributions including suggestions, pull requests, etc. are very welcome.
+*keyrings.envvars* uses `Conventional Commits`_ format for commit messages.
 
 
 License
@@ -109,3 +110,4 @@ This project was generated from `@cjolowicz`_'s `Hypermodern Python Cookiecutter
 .. _file an issue: https://github.com/wwuck/keyrings.envvars/issues
 .. _pip: https://pip.pypa.io/
 .. _keyring: https://pypi.org/project/keyring/
+.. _Conventional Commits: https://www.conventionalcommits.org/
