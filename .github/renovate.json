@@ -1,0 +1,79 @@
+{
+  "extends": [
+    "config:base",
+    ":enablePreCommit",
+    ":prNotPending",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)",
+    ":semanticCommitTypeAll(ci)"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "description": "use pep440 versioning for specific packages.",
+      "matchManagers": [
+        "pre-commit"
+      ],
+      "matchPackageNames": [
+        "psf/black",
+        "pre-commit/mirrors-mypy",
+        "myint/docformatter"
+      ],
+      "versioning": "pep440"
+    },
+    {
+      "description": "black is in perpetual beta and so uses unstable version.",
+      "ignoreUnstable": false,
+      "matchPackageNames": [
+        "black",
+        "psf/black"
+      ]
+    },
+    {
+      "description": "flake8 and plugin packages can update together.",
+      "groupName": "flake8",
+      "matchPackageNames": [
+        "darglint",
+        "dlint",
+        "pep8-naming",
+        "pycqa/flake8"
+      ],
+      "matchPackagePrefixes": [
+        "flake8"
+      ],
+      "separateMajorMinor": false
+    },
+    {
+      "description": "linting.",
+      "groupName": "linting",
+      "matchPackageNames": [
+        "isort",
+        "pycqa/isort",
+        "mypy",
+        "pre-commit/mirrors-mypy",
+        "black",
+        "psf/black",
+        "yamllint",
+        "adrienverge/yamllint"
+      ]
+    }
+  ],
+  "rebaseWhen": "behind-base-branch",
+  "regexManagers": [
+    {
+      "datasourceTemplate": "pypi",
+      "description": "Find any python dependecy within .pre-commit-config.yaml or noxfile.py file. Anything with '==' is assumed to be a python dependency. Section in square brackets is ignored.",
+      "fileMatch": [
+        "^\\.pre-commit-config\\.yaml$",
+        "^noxfile\\.py$"
+      ],
+      "matchStrings": [
+        "(?<depName>[\\w\\-\\+]*?)(\\[.*\\])?==(?<currentValue>[\\w\\.\\+\\*\\-]*)"
+      ]
+    }
+  ],
+  "stabilityDays": 3
+}
