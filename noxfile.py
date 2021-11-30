@@ -124,9 +124,9 @@ def build_check(session: nox.Session) -> None:
 
 
 @nox.session
-def gitlint(session: nox.Session) -> None:
+def precommit(session: nox.Session) -> None:
     """
-    Gitlint.
+    pre-commit.
 
     :param session: nox session
     """
@@ -136,8 +136,8 @@ def gitlint(session: nox.Session) -> None:
         args.extend(session.posargs)
 
     deps = [
-        'gitlint==0.16.0',
+        'pre-commit==2.15.0',
     ]
 
     session.install(*deps)
-    session.run('gitlint', *args)
+    session.run('pre-commit', 'run', '--all-files', '--show-diff-on-failure', *args)
