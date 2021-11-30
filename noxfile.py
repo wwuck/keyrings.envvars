@@ -37,7 +37,7 @@ def yamllint(session: nox.Session) -> None:
     if session.posargs:
         args.extend(session.posargs)
 
-    session.install('yamllint')
+    session.install('yamllint==1.26.3')
     session.run('yamllint', *args)
 
 
@@ -136,7 +136,7 @@ def gitlint(session: nox.Session) -> None:
         args.extend(session.posargs)
 
     deps = [
-        'gitlint',
+        'gitlint==1.16.0',
     ]
 
     session.install(*deps)
