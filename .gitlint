@@ -2,3 +2,7 @@
 # You HAVE to add the rule here to enable it, only configuring (such as below)
 # does NOT enable it.
 contrib=contrib-title-conventional-commits
+
+[ignore-by-author-name]
+regex=^Renovate Bot$
+ignore=body-is-missing,title-max-length
