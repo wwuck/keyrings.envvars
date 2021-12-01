@@ -61,6 +61,7 @@ repos:
       - id: toml-sort
         args:
           - --all
+          - --in-place
   - repo: https://github.com/psf/black
     rev: 21.7b0
     hooks:
