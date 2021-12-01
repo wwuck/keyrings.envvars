@@ -1,8 +1,6 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 ---
-default_language_version:
-  python: python3.8
 repos:
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.16.0
@@ -148,16 +146,11 @@ repos:
           - keyring==23.4.0
           - pytest==6.2.5
           - nox==2021.10.01
-  - repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.7.2
-    hooks:
-      - id: shellcheck
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.5
     hooks:
       - id: forbid-binary
       - id: git-check
-      # - id: protect-first-parent
       - id: script-must-have-extension
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.9.0
