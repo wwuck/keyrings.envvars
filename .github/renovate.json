@@ -2,8 +2,8 @@
   "automerge": true,
   "extends": [
     "config:base",
+    ":automergeRequireAllStatusChecks",
     ":enablePreCommit",
-    ":prNotPending",
     ":rebaseStalePrs",
     ":semanticCommits",
     ":semanticCommitScope(deps)",
