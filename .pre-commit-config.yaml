@@ -149,7 +149,7 @@ repos:
           - pytest==6.2.5
           - nox==2021.10.01
   - repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.7.2
+    rev: v0.8.0
     hooks:
       - id: shellcheck
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
