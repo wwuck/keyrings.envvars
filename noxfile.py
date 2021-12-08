@@ -115,7 +115,7 @@ def build_check(session: nox.Session) -> None:
     """
     deps: list[str] = [
         'check-wheel-contents==0.3.3',
-        'twine==3.7.0',
+        'twine==3.7.1',
     ]
 
     session.install(*deps)
