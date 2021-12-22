@@ -133,7 +133,7 @@ repos:
           - flake8-2020==1.6.1
           - pep8-naming==0.12.1
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.920
+    rev: v0.921
     hooks:
       - id: mypy
         args:
