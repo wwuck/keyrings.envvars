@@ -139,7 +139,7 @@ repos:
         args:
           - --strict
         additional_dependencies:
-          - keyring==23.4.0
+          - keyring==23.5.0
           - pytest==6.2.5
           - nox==2021.10.01
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
