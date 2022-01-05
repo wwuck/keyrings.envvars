@@ -114,7 +114,7 @@ def build_check(session: nox.Session) -> None:
     :param session: nox session
     """
     deps: list[str] = [
-        'check-wheel-contents==0.3.3',
+        'check-wheel-contents==0.3.4',
         'twine==3.7.1',
     ]
 
