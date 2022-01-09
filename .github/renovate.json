@@ -76,5 +76,14 @@
       ]
     }
   ],
-  "stabilityDays": 3
+  "stabilityDays": 3,
+  "vulnerabilityAlerts": {
+    "assignees": [
+      "@wwuck"
+    ],
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  }
 }
