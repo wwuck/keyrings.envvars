@@ -4,10 +4,10 @@ extend-exclude =
     .venv,
     .nox,
     .pytest_cache,
-extend-ignore = E203
+extend-ignore = ANN101,ANN102,E203
 per-file-ignores =
     src/keyrings/envvars/__init__.py: TC002
-    src/keyrings/envvars/tests/*.py: S101
+    src/keyrings/envvars/tests/*.py: S101,I252
 max-complexity = 10
 copyright-check = True
 copyright-min-file-size = 1
@@ -16,3 +16,4 @@ known-modules = :[keyring_envvars,pytest,nox,dunamai,packaging]
 enable-extensions = G,C,T,TC1
 noqa-require-code = True
 literal-multiline-quotes = double
+ban-relative-imports = True

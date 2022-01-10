@@ -124,7 +124,7 @@ def build_check(session: nox.Session) -> None:
 
 
 @nox.session
-def precommit(session: nox.Session) -> None:
+def pre_commit(session: nox.Session) -> None:
     """
     pre-commit.
 

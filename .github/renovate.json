@@ -66,7 +66,7 @@
   "regexManagers": [
     {
       "datasourceTemplate": "pypi",
-      "description": "Find any python dependecy within .pre-commit-config.yaml or noxfile.py file. Anything with '==' is assumed to be a python dependency. Section in square brackets is ignored.",
+      "description": "Find any python dependency within .pre-commit-config.yaml or noxfile.py file. Anything with '==' is assumed to be a python dependency. Section in square brackets is ignored.",
       "fileMatch": [
         "^\\.pre-commit-config\\.yaml$",
         "^noxfile\\.py$"
