@@ -50,7 +50,7 @@ repos:
         args:
           - --py36-plus
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.19.0
+    rev: v0.23.1
     hooks:
       - id: toml-sort
         args:
