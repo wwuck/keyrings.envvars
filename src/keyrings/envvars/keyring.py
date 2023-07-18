@@ -5,7 +5,7 @@ import os
 import re
 from typing import TYPE_CHECKING
 
-from keyring.backend import KeyringBackend, credentials, errors, properties
+from keyring.backend import KeyringBackend, credentials, errors
 
 if TYPE_CHECKING:
     from typing import AbstractSet
@@ -16,8 +16,9 @@ class EnvvarsKeyring(KeyringBackend):
 
     EnvMapping = dict[tuple[str, str], credentials.EnvironCredential]
 
+    priority = 1
+
     def __init__(self) -> None:
-        """init."""
         super().__init__()  # type: ignore[no-untyped-call]
 
     @staticmethod
@@ -54,16 +55,6 @@ class EnvvarsKeyring(KeyringBackend):
             env_map[(service_name, username)] = cred
 
         return env_map
-
-    @properties.ClassProperty
-    @classmethod
-    def priority(cls) -> float | int:  # type: ignore[override]
-        """
-        Priority 1.
-
-        :returns: float | int
-        """
-        return 1
 
     def get_password(self, service: str, username: str) -> str | None:
         """
