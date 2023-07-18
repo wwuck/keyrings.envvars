@@ -1,7 +1,8 @@
 ---
 extends: default
 ignore: |
-    .nox/
+  .nox/
+
 rules:
   line-length:
     max: 120
@@ -9,4 +10,7 @@ rules:
     quote-type: single
     required: only-when-needed
   truthy:
-    allowed-values: ['true', 'false', 'on']
+    allowed-values:
+      - 'true'
+      - 'false'
+      - 'on'

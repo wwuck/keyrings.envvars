@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import os
 import re
-from typing import TYPE_CHECKING, Dict, Tuple
+from typing import TYPE_CHECKING
 
 from keyring.backend import KeyringBackend, credentials, errors, properties
 
@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 class EnvvarsKeyring(KeyringBackend):
     """Pip Environment Credentials EnvvarsKeyring."""
 
-    EnvMapping = Dict[Tuple[str, str], credentials.EnvironCredential]
+    EnvMapping = dict[tuple[str, str], credentials.EnvironCredential]
 
     def __init__(self) -> None:
         """init."""

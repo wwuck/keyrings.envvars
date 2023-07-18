@@ -10,19 +10,19 @@ nox.needs_version = '>=2021.10.1'
 
 
 @nox.session
-def flake8(session: nox.Session) -> None:
+def ruff(session: nox.Session) -> None:
     """
-    flake8.
+    ruff.
 
     :param session: nox session
     """
-    args: list[str] = []
+    args: list[str] = ['check', os.path.realpath(session.invoked_from)]
 
     if session.posargs:
         args.extend(session.posargs)
 
-    session.install('.[flake8]')
-    session.run('flake8', *args)
+    session.install('ruff==0.0.278')
+    session.run('ruff', *args)
 
 
 @nox.session
@@ -32,7 +32,7 @@ def yamllint(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args: list[str] = ['-f', 'parsable', os.path.relpath(session.invoked_from)]
+    args: list[str] = ['-f', 'parsable', os.path.realpath(session.invoked_from)]
 
     if session.posargs:
         args.extend(session.posargs)

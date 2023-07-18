@@ -14,10 +14,12 @@ name: CodeQL
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [main]
+    branches:
+      - main
   schedule:
     - cron: 23 8 * * 6
 
@@ -29,14 +31,13 @@ jobs:
       actions: read
       contents: read
       security-events: write
-
     strategy:
       fail-fast: false
       matrix:
-        language: [python]
+        language:
+          - python
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -66,6 +67,5 @@ jobs:
       # - run: |
       #    make bootstrap
       #    make release
-
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
