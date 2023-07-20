@@ -22,7 +22,7 @@ jobs:
       - name: Build package
         run: nox -s build build_check
       - name: Publish package
-        uses: pypa/gh-action-pypi-publish@717ba43cfbb0387f6ce311b169a825772f54d295
+        uses: pypa/gh-action-pypi-publish@2a939dd49bdb1e0d1c38d33980bcb39186f8e076
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
