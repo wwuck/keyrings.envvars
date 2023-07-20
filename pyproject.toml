@@ -32,7 +32,7 @@ mypy = [
   'keyring>=23.4.0',
   'mypy==0.910',
   'nox==2021.10.01',
-  'pytest==6.2.5',
+  'pytest==7.4.0',
 ]
 pytest = [
   'pytest-antilru==1.0.5',
