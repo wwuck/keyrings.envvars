@@ -76,7 +76,7 @@ repos:
           - pytest==6.2.5
           - nox==2022.1.7
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.5
+    rev: 3.0.0
     hooks:
       - id: forbid-binary
       - id: git-check
