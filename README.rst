@@ -40,7 +40,7 @@ Requirements
 ------------
 
 * keyring >= 23.4.0
-* Python >= 3.8
+* Python >= 3.9
 
 
 Installation
