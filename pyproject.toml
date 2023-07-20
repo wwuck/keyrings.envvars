@@ -39,7 +39,7 @@ pytest = [
   'pytest-cov==2.12.1',
   'pytest-flakefinder==1',
   'pytest-openfiles==0.5',
-  'pytest-randomly==3.10.1',
+  'pytest-randomly==3.13.0',
   'pytest-xdist[psutil]==2.3',
   'pytest==6.2.5',
 ]
