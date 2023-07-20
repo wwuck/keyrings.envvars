@@ -41,7 +41,7 @@ pytest = [
   'pytest-openfiles==0.5',
   'pytest-randomly==3.10.1',
   'pytest-xdist[psutil]==2.3',
-  'pytest==6.2.5',
+  'pytest==7.4.0',
 ]
 
 [project.urls]
