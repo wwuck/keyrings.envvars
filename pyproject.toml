@@ -30,7 +30,7 @@ envvars = 'keyrings.envvars.keyring:Keyring'
 [project.optional-dependencies]
 mypy = [
   'keyring>=23.4.0',
-  'mypy==0.910',
+  'mypy==0.991',
   'nox==2021.10.01',
   'pytest==6.2.5',
 ]

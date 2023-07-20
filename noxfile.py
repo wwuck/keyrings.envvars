@@ -37,7 +37,7 @@ def yamllint(session: nox.Session) -> None:
     if session.posargs:
         args.extend(session.posargs)
 
-    session.install('yamllint==1.26.3')
+    session.install('yamllint==1.32.0')
     session.run('yamllint', *args)
 
 
