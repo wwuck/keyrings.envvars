@@ -1,7 +1,7 @@
 {
   "automerge": true,
   "extends": [
-    "config:base",
+    "config:recommended",
     ":automergeRequireAllStatusChecks",
     ":enablePreCommit",
     ":rebaseStalePrs",
@@ -14,45 +14,9 @@
   ],
   "packageRules": [
     {
-      "description": "use pep440 versioning for specific packages.",
-      "matchManagers": [
-        "pre-commit"
-      ],
-      "matchPackageNames": [
-        "psf/black",
-        "pre-commit/mirrors-mypy",
-        "myint/docformatter"
-      ],
-      "versioning": "pep440"
-    },
-    {
-      "description": "black is in perpetual beta and so uses unstable version.",
-      "ignoreUnstable": false,
-      "matchPackageNames": [
-        "black",
-        "psf/black"
-      ]
-    },
-    {
-      "description": "flake8 and plugin packages can update together.",
-      "groupName": "flake8",
-      "matchPackageNames": [
-        "darglint",
-        "dlint",
-        "pep8-naming",
-        "pycqa/flake8"
-      ],
-      "matchPackagePrefixes": [
-        "flake8"
-      ],
-      "separateMajorMinor": false
-    },
-    {
       "description": "linting.",
       "groupName": "linting",
       "matchPackageNames": [
-        "isort",
-        "pycqa/isort",
         "mypy",
         "pre-commit/mirrors-mypy",
         "black",
