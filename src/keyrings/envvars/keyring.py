@@ -16,7 +16,7 @@ class EnvvarsKeyring(KeyringBackend):
 
     EnvMapping = dict[tuple[str, str], credentials.EnvironCredential]
 
-    priority = 1
+    priority = 1  # type: ignore[assignment]
 
     def __init__(self) -> None:
         super().__init__()  # type: ignore[no-untyped-call]

@@ -16,7 +16,7 @@ class TestKeyring:
     @pytest.mark.usefixtures('_mock_keyring_environment')
     def test_get(self) -> None:
         """Test getting a password from a defined service and username."""
-        keyring.set_keyring(EnvvarsKeyring())  # type: ignore[no-untyped-call]
+        keyring.set_keyring(EnvvarsKeyring())
 
         service = 'https://index.example.com'
         user = 'testusername'
@@ -27,7 +27,7 @@ class TestKeyring:
     @pytest.mark.usefixtures('_mock_keyring_environment')
     def test_get_invalid_service(self) -> None:
         """Test getting a password from an invalid service and username."""
-        keyring.set_keyring(EnvvarsKeyring())  # type: ignore[no-untyped-call]
+        keyring.set_keyring(EnvvarsKeyring())
 
         service = 'https://index-unknown.example.com'
         user = 'testusername'
@@ -38,7 +38,7 @@ class TestKeyring:
     @pytest.mark.usefixtures('_mock_keyring_environment')
     def test_get_invalid_username(self) -> None:
         """Test getting a password from an invalid service and username."""
-        keyring.set_keyring(EnvvarsKeyring())  # type: ignore[no-untyped-call]
+        keyring.set_keyring(EnvvarsKeyring())
 
         service = 'https://index.example.com'
         user = 'invalidusername'
@@ -48,7 +48,7 @@ class TestKeyring:
 
     def test_set(self) -> None:
         """Setting a password should raise an error."""
-        keyring.set_keyring(EnvvarsKeyring())  # type: ignore[no-untyped-call]
+        keyring.set_keyring(EnvvarsKeyring())
 
         service = 'https://index.example.com'
         user = 'testusername'
@@ -59,7 +59,7 @@ class TestKeyring:
     @pytest.mark.usefixtures('_mock_keyring_environment')
     def test_delete(self) -> None:
         """Deleting a password should raise an error."""
-        keyring.set_keyring(EnvvarsKeyring())  # type: ignore[no-untyped-call]
+        keyring.set_keyring(EnvvarsKeyring())
 
         service = 'https://index.example.com'
         user = 'testusername'
