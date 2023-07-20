@@ -37,7 +37,7 @@ def yamllint(session: nox.Session) -> None:
     if session.posargs:
         args.extend(session.posargs)
 
-    session.install('yamllint==1.26.3')
+    session.install('yamllint==1.32.0')
     session.run('yamllint', *args)
 
 
@@ -99,7 +99,7 @@ def build(session: nox.Session) -> None:
     ]
 
     deps: list[str] = [
-        'flit>=3.5.1',
+        'flit==3.9.0',
     ]
 
     session.install(*deps)
@@ -114,8 +114,8 @@ def build_check(session: nox.Session) -> None:
     :param session: nox session
     """
     deps: list[str] = [
-        'check-wheel-contents==0.3.4',
-        'twine==3.7.1',
+        'check-wheel-contents==0.4.0',
+        'twine==4.0.2',
     ]
 
     session.install(*deps)
@@ -136,7 +136,7 @@ def pre_commit(session: nox.Session) -> None:
         args.extend(session.posargs)
 
     deps = [
-        'pre-commit==2.17.0',
+        'pre-commit==3.3.3',
     ]
 
     session.install(*deps)

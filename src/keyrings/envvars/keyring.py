@@ -5,7 +5,9 @@ import os
 import re
 from typing import TYPE_CHECKING
 
-from keyring.backend import KeyringBackend, credentials, errors
+from keyring.backend import KeyringBackend
+from keyring.credentials import EnvironCredential
+from keyring.errors import PasswordDeleteError, PasswordSetError
 
 if TYPE_CHECKING:
     from typing import AbstractSet
@@ -14,9 +16,9 @@ if TYPE_CHECKING:
 class EnvvarsKeyring(KeyringBackend):
     """Pip Environment Credentials EnvvarsKeyring."""
 
-    EnvMapping = dict[tuple[str, str], credentials.EnvironCredential]
+    EnvMapping = dict[tuple[str, str], EnvironCredential]
 
-    priority = 1  # type: ignore[assignment]
+    priority: int = 1  # type: ignore[assignment]
 
     def __init__(self) -> None:
         super().__init__()  # type: ignore[no-untyped-call]
@@ -43,7 +45,7 @@ class EnvvarsKeyring(KeyringBackend):
             service_name = os.getenv('KEYRING_SERVICE_NAME_' + env_id, '')
             username_env = 'KEYRING_SERVICE_USERNAME_' + env_id
 
-            cred = credentials.EnvironCredential(  # type: ignore[no-untyped-call]
+            cred = EnvironCredential(  # type: ignore[no-untyped-call]
                 'KEYRING_SERVICE_USERNAME_' + env_id,
                 'KEYRING_SERVICE_PASSWORD_' + env_id,
             )
@@ -79,7 +81,7 @@ class EnvvarsKeyring(KeyringBackend):
         :returns str: password
         :raises PasswordSetError: error when setting password
         """
-        raise errors.PasswordSetError('Environment should not be modified by keyring')
+        raise PasswordSetError('Environment should not be modified by keyring')
 
     def delete_password(self, service: str, username: str) -> None:
         """
@@ -90,19 +92,19 @@ class EnvvarsKeyring(KeyringBackend):
         :returns str: password
         :raises PasswordDeleteError: error when deleting password
         """
-        raise errors.PasswordDeleteError('Environment should not be modified by keyring')
+        raise PasswordDeleteError('Environment should not be modified by keyring')
 
     def get_credential(
         self,
         service: str,
         username: str | None,
-    ) -> credentials.EnvironCredential | None:
+    ) -> EnvironCredential | None:
         """
         Get the username and password for the service.
 
         :param service: keyring service
         :param username: service username
-        :returns: credentials.EnvironCredential
+        :returns: EnvironCredential
         """
         if username is not None:
             return EnvvarsKeyring._get_mapping().get((service, username))

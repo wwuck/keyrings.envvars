@@ -4,7 +4,8 @@ from __future__ import annotations
 import os
 
 import pytest
-from keyring.backend import credentials, errors
+from keyring.credentials import EnvironCredential
+from keyring.errors import PasswordDeleteError, PasswordSetError
 
 from ..keyring import EnvvarsKeyring
 
@@ -32,7 +33,7 @@ class TestKeyringBackend:
             (
                 'https://index.example.com',
                 'testusername',
-                credentials.EnvironCredential(  # type: ignore[no-untyped-call]
+                EnvironCredential(  # type: ignore[no-untyped-call]
                     'KEYRING_SERVICE_USERNAME_0',
                     'KEYRING_SERVICE_PASSWORD_0',
                 ),
@@ -42,7 +43,7 @@ class TestKeyringBackend:
             (
                 'https://index2.example.com',
                 'testusername2',
-                credentials.EnvironCredential(  # type: ignore[no-untyped-call]
+                EnvironCredential(  # type: ignore[no-untyped-call]
                     'KEYRING_SERVICE_USERNAME_2',
                     'KEYRING_SERVICE_PASSWORD_2',
                 ),
@@ -51,7 +52,7 @@ class TestKeyringBackend:
             pytest.param(
                 'https://index.example.com',
                 'testusername',
-                credentials.EnvironCredential(  # type: ignore[no-untyped-call]
+                EnvironCredential(  # type: ignore[no-untyped-call]
                     'KEYRING_SERVICE_USERNAME_1',
                     'KEYRING_SERVICE_PASSWORD_1',
                 ),
@@ -59,7 +60,7 @@ class TestKeyringBackend:
             ),
         ],
     )
-    def test_get_mapping(self, service: str, username: str, expected: credentials.EnvironCredential) -> None:
+    def test_get_mapping(self, service: str, username: str, expected: EnvironCredential) -> None:
         """
         Test getting None from an empty service and username.
 
@@ -109,7 +110,7 @@ class TestKeyringBackend:
             (
                 'https://index.example.com',
                 'testusername',
-                credentials.EnvironCredential(  # type: ignore[no-untyped-call]
+                EnvironCredential(  # type: ignore[no-untyped-call]
                     'KEYRING_SERVICE_USERNAME_0',
                     'KEYRING_SERVICE_PASSWORD_0',
                 ),
@@ -119,7 +120,7 @@ class TestKeyringBackend:
             (
                 'https://index2.example.com',
                 'testusername2',
-                credentials.EnvironCredential(  # type: ignore[no-untyped-call]
+                EnvironCredential(  # type: ignore[no-untyped-call]
                     'KEYRING_SERVICE_USERNAME_2',
                     'KEYRING_SERVICE_PASSWORD_2',
                 ),
@@ -128,7 +129,7 @@ class TestKeyringBackend:
             pytest.param(
                 'https://index.example.com',
                 'testusername',
-                credentials.EnvironCredential(  # type: ignore[no-untyped-call]
+                EnvironCredential(  # type: ignore[no-untyped-call]
                     'KEYRING_SERVICE_USERNAME_1',
                     'KEYRING_SERVICE_PASSWORD_1',
                 ),
@@ -136,7 +137,7 @@ class TestKeyringBackend:
             ),
         ],
     )
-    def test_get_credential(self, service: str, username: str, expected: credentials.EnvironCredential) -> None:
+    def test_get_credential(self, service: str, username: str, expected: EnvironCredential) -> None:
         """
         Test getting a credential.
 
@@ -157,7 +158,7 @@ class TestKeyringBackend:
         service = 'https://index.example.com'
         user = 'testusername'
         pw = 'testpassword'
-        with pytest.raises(errors.PasswordSetError):
+        with pytest.raises(PasswordSetError):
             k.set_password(service, user, pw)
 
     @pytest.mark.usefixtures('_mock_keyring_environment')
@@ -168,7 +169,7 @@ class TestKeyringBackend:
         service = 'https://index.example.com'
         user = 'testusername'
 
-        with pytest.raises(errors.PasswordDeleteError):
+        with pytest.raises(PasswordDeleteError):
             k.delete_password(service, user)
 
     def test_priority(self) -> None:

@@ -1,11 +1,11 @@
 ---
 repos:
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.17.0
+    rev: v0.19.1
     hooks:
       - id: gitlint
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.4.0
     hooks:
       - id: check-added-large-files
       - id: check-ast
@@ -36,7 +36,7 @@ repos:
           - --autofix
       - id: trailing-whitespace
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.2.1
+    rev: v3.0.0
     hooks:
       - id: add-trailing-comma
         args:
@@ -55,7 +55,7 @@ repos:
     hooks:
       - id: yamlfix
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.26.3
+    rev: v1.32.0
     hooks:
       - id: yamllint
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -66,30 +66,32 @@ repos:
           - --fix
           - --exit-non-zero-on-fix
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.931
+    rev: v1.4.1
     hooks:
       - id: mypy
         args:
           - --strict
         additional_dependencies:
           - keyring>=23.4.0
-          - pytest==6.2.5
-          - nox==2022.1.7
+          - pytest==7.4.0
+          - nox==2023.4.22
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.5
+    rev: 3.0.0
     hooks:
+      - id: check-mailmap
       - id: forbid-binary
       - id: git-check
+      - id: protect-first-parent
       - id: script-must-have-extension
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.9.0
+    rev: v1.10.0
     hooks:
       - id: python-use-type-annotations
       - id: rst-backticks
       - id: rst-directive-colons
       - id: rst-inline-touching-normal
   - repo: https://github.com/myint/docformatter
-    rev: v1.4
+    rev: v1.7.5
     hooks:
       - id: docformatter
         args:
@@ -102,7 +104,7 @@ repos:
     hooks:
       - id: rst-linter
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.1.0
+    rev: v2.2.5
     hooks:
       - id: codespell
   - repo: https://github.com/renovatebot/pre-commit-hooks

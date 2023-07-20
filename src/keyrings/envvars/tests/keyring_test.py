@@ -5,7 +5,7 @@ import os
 
 import keyring
 import pytest
-from keyring.backend import errors
+from keyring.errors import PasswordDeleteError, PasswordSetError
 
 from ..keyring import EnvvarsKeyring
 
@@ -53,7 +53,7 @@ class TestKeyring:
         service = 'https://index.example.com'
         user = 'testusername'
         pw = 'testpassword'
-        with pytest.raises(errors.PasswordSetError):
+        with pytest.raises(PasswordSetError):
             keyring.set_password(service, user, pw)
 
     @pytest.mark.usefixtures('_mock_keyring_environment')
@@ -64,5 +64,5 @@ class TestKeyring:
         service = 'https://index.example.com'
         user = 'testusername'
 
-        with pytest.raises(errors.PasswordDeleteError):
+        with pytest.raises(PasswordDeleteError):
             keyring.delete_password(service, user)

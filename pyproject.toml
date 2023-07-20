@@ -30,18 +30,18 @@ envvars = 'keyrings.envvars.keyring:Keyring'
 [project.optional-dependencies]
 mypy = [
   'keyring>=23.4.0',
-  'mypy==0.910',
-  'nox==2021.10.01',
-  'pytest==6.2.5',
+  'mypy==1.4.1',
+  'nox==2023.4.22',
+  'pytest==7.4.0',
 ]
 pytest = [
-  'pytest-antilru==1.0.5',
-  'pytest-cov==2.12.1',
-  'pytest-flakefinder==1',
-  'pytest-openfiles==0.5',
-  'pytest-randomly==3.10.1',
-  'pytest-xdist[psutil]==2.3',
-  'pytest==6.2.5',
+  'pytest-antilru==1.1.1',
+  'pytest-cov==4.1.0',
+  'pytest-flakefinder==1.1.0',
+  'pytest-openfiles==0.5.0',
+  'pytest-randomly==3.13.0',
+  'pytest-xdist[psutil]==3.3.1',
+  'pytest==7.4.0',
 ]
 
 [project.urls]
