@@ -130,7 +130,7 @@ def pre_commit(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args: list[str] = []
+    args: list[str] = ['--show-diff-on-failure']
 
     if session.posargs:
         args.extend(session.posargs)
