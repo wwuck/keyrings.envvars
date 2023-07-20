@@ -136,7 +136,7 @@ def pre_commit(session: nox.Session) -> None:
         args.extend(session.posargs)
 
     deps = [
-        'pre-commit==2.17.0',
+        'pre-commit==3.3.3',
     ]
 
     session.install(*deps)
