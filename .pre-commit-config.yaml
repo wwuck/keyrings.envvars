@@ -73,7 +73,7 @@ repos:
           - --strict
         additional_dependencies:
           - keyring>=23.4.0
-          - pytest==6.2.5
+          - pytest==7.4.0
           - nox==2022.1.7
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.5
