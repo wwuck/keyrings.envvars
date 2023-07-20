@@ -35,7 +35,7 @@ mypy = [
   'pytest==6.2.5',
 ]
 pytest = [
-  'pytest-antilru==1.0.5',
+  'pytest-antilru==1.1.1',
   'pytest-cov==2.12.1',
   'pytest-flakefinder==1',
   'pytest-openfiles==0.5',
