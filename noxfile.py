@@ -140,4 +140,11 @@ def pre_commit(session: nox.Session) -> None:
     ]
 
     session.install(*deps)
-    session.run('pre-commit', 'run', '--all-files', '--show-diff-on-failure', *args)
+    session.run(
+        'pre-commit',
+        'run',
+        '--all-files',
+        '--show-diff-on-failure',
+        *args,
+        env={'SKIP': 'no-commit-to-branch'},
+    )
