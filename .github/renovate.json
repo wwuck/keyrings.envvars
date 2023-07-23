@@ -1,53 +1,53 @@
 {
-  "automerge": true,
-  "extends": [
-    "config:recommended",
-    ":automergeRequireAllStatusChecks",
-    ":enablePreCommit",
-    ":rebaseStalePrs",
-    ":semanticCommits",
-    ":semanticCommitScope(deps)",
-    ":semanticCommitTypeAll(ci)"
-  ],
-  "labels": [
-    "dependencies"
-  ],
-  "packageRules": [
-    {
-      "description": "linting.",
-      "groupName": "linting",
-      "matchPackageNames": [
-        "mypy",
-        "pre-commit/mirrors-mypy",
-        "black",
-        "psf/black",
-        "yamllint",
-        "adrienverge/yamllint"
-      ]
-    }
-  ],
-  "rebaseWhen": "behind-base-branch",
-  "regexManagers": [
-    {
-      "datasourceTemplate": "pypi",
-      "description": "Find any python dependency within .pre-commit-config.yaml or noxfile.py file. Anything with '==' is assumed to be a python dependency. Section in square brackets is ignored.",
-      "fileMatch": [
-        "^\\.pre-commit-config\\.yaml$",
-        "^noxfile\\.py$"
-      ],
-      "matchStrings": [
-        "(?<depName>[\\w\\-\\+]*?)(\\[.*\\])?==(?<currentValue>[\\w\\.\\+\\*\\-]*)"
-      ]
-    }
-  ],
-  "stabilityDays": 3,
-  "vulnerabilityAlerts": {
-    "assignees": [
-      "@wwuck"
+    "automerge": true,
+    "extends": [
+        "config:recommended",
+        ":automergeRequireAllStatusChecks",
+        ":enablePreCommit",
+        ":rebaseStalePrs",
+        ":semanticCommits",
+        ":semanticCommitScope(deps)",
+        ":semanticCommitTypeAll(ci)"
     ],
-    "enabled": true,
     "labels": [
-      "security"
-    ]
-  }
+        "dependencies"
+    ],
+    "packageRules": [
+        {
+            "description": "linting.",
+            "groupName": "linting",
+            "matchPackageNames": [
+                "mypy",
+                "pre-commit/mirrors-mypy",
+                "black",
+                "psf/black",
+                "yamllint",
+                "adrienverge/yamllint"
+            ]
+        }
+    ],
+    "rebaseWhen": "behind-base-branch",
+    "regexManagers": [
+        {
+            "datasourceTemplate": "pypi",
+            "description": "Find any python dependency within .pre-commit-config.yaml or noxfile.py file. Anything with '==' is assumed to be a python dependency. Section in square brackets is ignored.",
+            "fileMatch": [
+                "^\\.pre-commit-config\\.yaml$",
+                "^noxfile\\.py$"
+            ],
+            "matchStrings": [
+                "(?<depName>[\\w\\-\\+]*?)(\\[.*\\])?==(?<currentValue>[\\w\\.\\+\\*\\-]*)"
+            ]
+        }
+    ],
+    "stabilityDays": 3,
+    "vulnerabilityAlerts": {
+        "assignees": [
+            "@wwuck"
+        ],
+        "enabled": true,
+        "labels": [
+            "security"
+        ]
+    }
 }

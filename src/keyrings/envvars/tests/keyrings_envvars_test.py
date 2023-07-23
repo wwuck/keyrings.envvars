@@ -58,6 +58,23 @@ class TestKeyringBackend:
                 ),
                 marks=pytest.mark.xfail,
             ),
+            pytest.param(
+                'https://index-duplicate.example.com',
+                'testusername',
+                EnvironCredential(  # type: ignore[no-untyped-call]
+                    'KEYRING_SERVICE_USERNAME_7',
+                    'KEYRING_SERVICE_PASSWORD_7',
+                ),
+                marks=pytest.mark.xfail,
+            ),
+            pytest.param(
+                'https://index-duplicate.example.com',
+                'testusername',
+                EnvironCredential(  # type: ignore[no-untyped-call]
+                    'KEYRING_SERVICE_USERNAME_8',
+                    'KEYRING_SERVICE_PASSWORD_8',
+                ),
+            ),
         ],
     )
     def test_get_mapping(self, service: str, username: str, expected: EnvironCredential) -> None:
@@ -72,7 +89,7 @@ class TestKeyringBackend:
 
         result = mapping.get((service, username))
 
-        assert len(mapping) == 5
+        assert len(mapping) == 6
         assert result == expected
 
     @pytest.mark.usefixtures('_mock_keyring_environment')

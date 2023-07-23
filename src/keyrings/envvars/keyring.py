@@ -32,7 +32,10 @@ class EnvvarsKeyring(KeyringBackend):
     def _get_ids(environ_keys: AbstractSet[str]) -> filter[str]:
         return filter(
             None,
-            map(EnvvarsKeyring._get_trailing_number, filter(lambda x: 'KEYRING_SERVICE_NAME_' in x, environ_keys)),
+            map(
+                EnvvarsKeyring._get_trailing_number,
+                sorted(filter(lambda x: 'KEYRING_SERVICE_NAME_' in x, environ_keys)),
+            ),
         )
 
     @classmethod

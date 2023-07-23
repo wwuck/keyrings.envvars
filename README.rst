@@ -62,7 +62,7 @@ Usage
 
    KEYRING_SERVICE_NAME_<n>=<service>
    KEYRING_SERVICE_USERNAME_<n>=<username>
-   KEYRING_SERVICE_PASSWORd_<n>=<password>
+   KEYRING_SERVICE_PASSWORD_<n>=<password>
 
 Example for usage with pip credentials:
 
@@ -75,6 +75,21 @@ Example for usage with pip credentials:
    KEYRING_SERVICE_USERNAME_1=testusername
    KEYRING_SERVICE_PASSWORD_1=testpassword
 
+Note: Defining multiple identical credentials (service name and username)
+will result in the last defined password being returned as the environment
+variables are sorted by the keyring backend.
+
+Eg.
+.. code:: console
+
+   export KEYRING_SERVICE_NAME_0=https://private-pypi-index.example.com
+   export KEYRING_SERVICE_USERNAME_0=testusername
+   export KEYRING_SERVICE_PASSWORD_0=testpassword
+   export KEYRING_SERVICE_NAME_1=https://private-pypi-index.example.com
+   export KEYRING_SERVICE_USERNAME_1=testusername
+   export KEYRING_SERVICE_PASSWORD_1=testpassword_1
+   keyring get https://private-pypi-index.example.com testusername
+   testpassword_1
 
 Contributing
 ------------
@@ -103,7 +118,6 @@ Credits
 This project was generated from `@cjolowicz`_'s `Hypermodern Python Cookiecutter`_ template.
 
 .. _@cjolowicz: https://github.com/cjolowicz
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _MIT license: https://opensource.org/licenses/MIT
 .. _PyPI: https://pypi.org/
 .. _Hypermodern Python Cookiecutter: https://github.com/cjolowicz/cookiecutter-hypermodern-python

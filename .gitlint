@@ -7,7 +7,3 @@ debug=true
 [ignore-by-author-name]
 regex=^Renovate Bot$
 ignore=body-is-missing,title-max-length
-
-[ignore-by-title]
-regex=^Merge [[:xdigit:]]{40} into [[:xdigit:]]{40}$
-ignore=CT1,T1,B6

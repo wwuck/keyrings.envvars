@@ -1,4 +1,8 @@
 ---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+minimum_pre_commit_version: 2.13.0
+
 repos:
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.19.1
@@ -24,6 +28,11 @@ repos:
       - id: destroyed-symlinks
       - id: detect-private-key
       - id: end-of-file-fixer
+      - id: file-contents-sorter
+        args:
+          - --ignore-case
+          - --unique
+        files: ^(whitelist\.txt|\.codespell-ignore)$
       - id: fix-byte-order-marker
       - id: fix-encoding-pragma
         args:
@@ -31,9 +40,15 @@ repos:
       - id: forbid-new-submodules
       - id: mixed-line-ending
       - id: name-tests-test
+      - id: no-commit-to-branch
+        args:
+          - --branch
+          - main
       - id: pretty-format-json
         args:
           - --autofix
+          - --indent
+          - '4'
       - id: trailing-whitespace
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.0.0
@@ -49,7 +64,6 @@ repos:
     rev: 23.7.0
     hooks:
       - id: black
-        language_version: python3
   - repo: https://github.com/lyz-code/yamlfix
     rev: 1.12.0
     hooks:
@@ -85,15 +99,21 @@ repos:
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
     hooks:
+      - id: python-check-blanket-type-ignore
+      - id: python-check-mock-methods
+      - id: python-no-eval
+      - id: python-no-log-warn
       - id: python-use-type-annotations
       - id: rst-backticks
       - id: rst-directive-colons
       - id: rst-inline-touching-normal
-  - repo: https://github.com/myint/docformatter
+      - id: text-unicode-replacement-char
+  - repo: https://github.com/pycqa/docformatter
     rev: v1.7.5
     hooks:
       - id: docformatter
         args:
+          - --black
           - --in-place
           - --pre-summary-newline
           - --wrap-summaries=120
@@ -102,16 +122,46 @@ repos:
     rev: v1.0.1
     hooks:
       - id: rst-linter
+  - repo: https://github.com/rstcheck/rstcheck
+    rev: v6.1.2
+    hooks:
+      - id: rstcheck
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.5
     hooks:
       - id: codespell
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 36.14.0
+    rev: 36.19.2
     hooks:
       - id: renovate-config-validator
-        files: .github/renovate.json
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.13
+    hooks:
+      - id: validate-pyproject
   - repo: meta
     hooks:
-      # - id: check-hooks-apply
       - id: check-useless-excludes
+  - repo: local
+    hooks:
+      - id: forbid-unicode-non-breaking-spaces
+        name: Detect unicode non-breaking space character U+00A0 aka M-BM-
+        language: system
+        entry: perl -ne 'print if $m = /\xc2\xa0/; $t ||= $m; END{{exit $t}}'
+        files: ''
+      - id: remove-unicode-non-breaking-spaces
+        name: Remove unicode non-breaking space character U+00A0 aka M-BM-
+        language: system
+        entry: perl -pi* -e 's/\xc2\xa0/ /g && ($t = 1) && print STDERR $_; END{{exit
+          $t}}'
+        files: ''
+      - id: forbid-en-dashes
+        name: Detect the EXTREMELY confusing unicode character U+2013
+        language: system
+        entry: perl -ne 'print if $m = /\xe2\x80\x93/; $t ||= $m; END{{exit $t}}'
+        files: ''
+      - id: remove-en-dashes
+        name: Remove the EXTREMELY confusing unicode character U+2013
+        language: system
+        entry: perl -pi* -e 's/\xe2\x80\x93/-/g && ($t = 1) && print STDERR $_; END{{exit
+          $t}}'
+        files: ''
