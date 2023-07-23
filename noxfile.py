@@ -93,17 +93,14 @@ def build(session: nox.Session) -> None:
 
     :param session: nox session
     """
-    args: list[str] = [
-        '--ini-file=pyproject.toml',
-        'build',
-    ]
+    args: list[str] = []
 
     deps: list[str] = [
-        'flit==3.9.0',
+        'build==0.10.0',
     ]
 
     session.install(*deps)
-    session.run('flit', *args)
+    session.run('python3', '-m', 'build', *args)
 
 
 @nox.session
