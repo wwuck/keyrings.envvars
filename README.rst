@@ -79,7 +79,6 @@ Note: Defining multiple identical credentials (service name and username)
 will result in the last defined password being returned as the environment
 variables are sorted by the keyring backend.
 
-Eg.
 .. code:: console
 
    export KEYRING_SERVICE_NAME_0=https://private-pypi-index.example.com
