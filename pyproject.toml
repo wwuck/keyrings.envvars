@@ -24,7 +24,7 @@ requires-python = '>=3.9,<4'
 version = '0.1.0rc0'
 
 [project.entry-points."keyring.backends"]
-envvars = 'keyrings.envvars.keyring:Keyring'
+envvars = 'keyrings.envvars.keyring:EnvvarsKeyring'
 
 [project.optional-dependencies]
 mypy = [
