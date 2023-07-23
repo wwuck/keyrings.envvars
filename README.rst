@@ -110,6 +110,8 @@ Issues
 If you encounter any problems,
 please `file an issue`_ along with a detailed description.
 
+Please read https://www.chiark.greenend.org.uk/~sgtatham/bugs.html before you file an issue.
+
 
 Credits
 -------
