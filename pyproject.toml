@@ -20,7 +20,7 @@ description = 'keyring backend plugin to retrieve credentials from environment v
 name = 'keyrings.envvars'
 readme = 'README.rst'
 requires-python = '>=3.9,<4'
-version = '1.0.1'
+version = '1.0.2'
 
 [project.entry-points."keyring.backends"]
 envvars = 'keyrings.envvars.keyring:EnvvarsKeyring'
@@ -43,7 +43,10 @@ pytest = [
 ]
 
 [project.urls]
-Home = 'https://github.com/wwuck'
+Documentation = 'https://github.com/wwuck/keyrings.envvars'
+Home = 'https://github.com/wwuck/keyrings.envvars'
+Source = 'https://github.com/wwuck/keyrings.envvars'
+Tracker = 'https://github.com/wwuck/keyrings.envvars/issues'
 
 [tool.black]
 line-length = 120
