@@ -3,19 +3,21 @@ keyrings.envvars
 
 |PyPI| |Status| |Python Version| |License|
 
-|CI| |Codecov|
+|PyPI Downloads| |CI| |Codecov| |SonarCloud|
 
 |pre-commit| |Black|
 
-.. |PyPI| image:: https://img.shields.io/pypi/v/keyrings.envvars.svg
+.. |PyPI| image:: https://img.shields.io/pypi/v/keyrings.envvars
    :target: https://pypi.org/project/keyrings.envvars/
    :alt: PyPI
-.. |Status| image:: https://img.shields.io/pypi/status/keyrings.envvars.svg
+.. |Status| image:: https://img.shields.io/pypi/status/keyrings.envvars
    :target: https://pypi.org/project/keyrings.envvars/
    :alt: Status
 .. |Python Version| image:: https://img.shields.io/pypi/pyversions/keyrings.envvars
    :target: https://pypi.org/project/keyrings.envvars
    :alt: Python Version
+.. |PyPI Downloads| image:: https://img.shields.io/pypi/dm/keyrings.envvars
+   :alt: PyPI - Downloads
 .. |License| image:: https://img.shields.io/pypi/l/keyrings.envvars
    :target: https://opensource.org/licenses/MIT
    :alt: License
@@ -25,10 +27,12 @@ keyrings.envvars
 .. |Codecov| image:: https://codecov.io/gh/wwuck/keyrings.envvars/branch/main/graph/badge.svg
    :target: https://codecov.io/gh/wwuck/keyrings.envvars
    :alt: Codecov
+.. |SonarCloud| image:: https://sonarcloud.io/api/project_badges/measure?project=wwuck_keyrings.envvars&metric=alert_status
+   :alt: Sonar Coverage
 .. |pre-commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
    :target: https://github.com/pre-commit/pre-commit
    :alt: pre-commit
-.. |Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
+.. |Black| image:: https://img.shields.io/badge/code%20style-black-000000
    :target: https://github.com/psf/black
    :alt: Black
 
