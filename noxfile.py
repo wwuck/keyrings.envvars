@@ -21,7 +21,7 @@ def ruff(session: nox.Session) -> None:
     if session.posargs:
         args.extend(session.posargs)
 
-    session.install('ruff==0.0.280')
+    session.install('ruff==0.0.281')
     session.run('ruff', *args)
 
 
