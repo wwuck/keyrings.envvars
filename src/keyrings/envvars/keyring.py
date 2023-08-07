@@ -67,7 +67,7 @@ class EnvvarsKeyring(KeyringBackend):
 
         :param service: keyring service
         :param username: service username
-        :returns: Optional[str]
+        :rtype: str | None
         """
         cred = self.get_credential(service, username)
         if cred is not None:
@@ -81,7 +81,6 @@ class EnvvarsKeyring(KeyringBackend):
         :param service: keyring service
         :param username: service username
         :param password: service password
-        :returns str: password
         :raises PasswordSetError: error when setting password
         """
         raise PasswordSetError('Environment should not be modified by keyring')
@@ -92,7 +91,6 @@ class EnvvarsKeyring(KeyringBackend):
 
         :param service: keyring service
         :param username: service username
-        :returns str: password
         :raises PasswordDeleteError: error when deleting password
         """
         raise PasswordDeleteError('Environment should not be modified by keyring')
@@ -107,7 +105,8 @@ class EnvvarsKeyring(KeyringBackend):
 
         :param service: keyring service
         :param username: service username
-        :returns: EnvironCredential
+        :return: credentials if service/username credentials exist in keyring
+        :rtype: EnvironCredential | None
         """
         if username is not None:
             return EnvvarsKeyring._get_mapping().get((service, username))

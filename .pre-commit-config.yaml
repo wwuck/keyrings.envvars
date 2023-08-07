@@ -118,6 +118,12 @@ repos:
           - --pre-summary-newline
           - --wrap-summaries=120
           - --wrap-descriptions=120
+  - repo: https://github.com/jsh9/pydoclint
+    rev: 0.1.4
+    hooks:
+      - id: pydoclint
+        args:
+          - --config=pyproject.toml
   - repo: https://github.com/Lucas-C/pre-commit-hooks-markup
     rev: v1.0.1
     hooks:
