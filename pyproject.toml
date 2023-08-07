@@ -76,6 +76,10 @@ warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
+[tool.pydoclint]
+arg-type-hints-in-docstring = false
+style = 'sphinx'
+
 [tool.ruff]
 line-length = 120
 
