@@ -25,8 +25,8 @@ class EnvvarsKeyring(KeyringBackend):
 
     @staticmethod
     def _get_trailing_number(s: str) -> str | None:
-        m = re.search(r'\d+$', s)
-        return m.group() if m else None
+        m = re.search(r'^KEYRING_SERVICE_NAME_(\d+)$', s)
+        return m.group(1) if m else None
 
     @staticmethod
     def _get_ids(environ_keys: AbstractSet[str]) -> filter[str]:
