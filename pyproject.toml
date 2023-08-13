@@ -28,7 +28,7 @@ envvars = 'keyrings.envvars.keyring:EnvvarsKeyring'
 [project.optional-dependencies]
 mypy = [
   'keyring>=23.4.0',
-  'mypy==1.4.1',
+  'mypy==1.5.0',
   'nox==2023.4.22',
   'pytest==7.4.0',
 ]
