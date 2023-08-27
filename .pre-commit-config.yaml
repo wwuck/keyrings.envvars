@@ -119,7 +119,7 @@ repos:
           - --wrap-summaries=120
           - --wrap-descriptions=120
   - repo: https://github.com/jsh9/pydoclint
-    rev: 0.2.2
+    rev: 0.2.4
     hooks:
       - id: pydoclint
         args:
