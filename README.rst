@@ -1,3 +1,9 @@
+Project moved
+=============
+
+Project hosting has moved to https://codeberg.org/wwuck/keyrings.envvars.
+
+
 keyrings.envvars
 ================
 
